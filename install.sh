@@ -8,8 +8,12 @@ URL_NVM="https://github.com/lukechilds/zsh-nvm"
 URL_UNITY_HUB="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage"
 
 # before execute
+# create installation directory
+cd /home/$USER/Downloads/
+mkdir $DOWNLOADS
+
 # move to installation directory
-cd /home/$USER/Downloads/$DOWNLOADS
+cd $DOWNLOADS
 
 ## add yarn repository to sourcelist
 ## reference https://classic.yarnpkg.com/en/docs/install/#debian-stable
@@ -29,6 +33,7 @@ sudo apt install vlc -y
 sudo apt install steam -y
 sudo apt install --no-install-recommends yarn -y
 sudo apt install remmina remmina-plugin-rdp libfreerdp-plugins-standard -y
+sudo apt install php php-cli php-fpm php-json php-pdo php-mysql php-zip php-gd  php-mbstring php-curl php-xml php-pear php-bcmath
 
 # install snaps
 sudo snap install spotify 
@@ -36,7 +41,6 @@ sudo snap install code --classic
 sudo snap install insomnia
 sudo snap install dotnet-runtime-31
 sudo snap install dotnet-sdk --classic
-# sudo snap install rider --classic
 sudo snap alias dotnet-sdk.dotnet dotnet
 sudo snap install krita
 sudo snap install blender --classic
@@ -54,6 +58,3 @@ wget -c "$URL_UNITY_HUB" -P "$DOWNLOADS"
 
 # set zsh as default shell
 chsh -s $(which zsh)
-
-# install vscode sync-settings
-code --install-extension Shan.code-settings-sync
