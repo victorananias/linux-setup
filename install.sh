@@ -12,6 +12,7 @@ sudo apt update -y
 sudo apt upgrade -y
 
 # install programs
+sudo apt install curl -y
 sudo apt install snapd -y
 sudo apt install zsh -y
 sudo apt install git -y
