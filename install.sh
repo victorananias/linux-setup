@@ -5,6 +5,7 @@ URL_GOOGLE_CHROME="https://dl.google.com/linux/direct/google-chrome-stable_curre
 URL_OH_MY_ZSH="https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
 URL_ZSH_SYNTAX_HIGHLIGHT="https://github.com/zsh-users/zsh-syntax-highlighting.git"
 URL_NVM="https://github.com/lukechilds/zsh-nvm"
+URL_UNITY_HUB="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage"
 
 # before execute
 # move to installation directory
@@ -47,6 +48,7 @@ git clone $URL_ZSH_SYNTAX_HIGHLIGHT ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z
 
 mkdir "$DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME" -P "$DOWNLOADS"
+wget -c "$URL_UNITY_HUB" -P "$DOWNLOADS"
 
 # set zsh as default shell
 chsh -s $(which zsh)
