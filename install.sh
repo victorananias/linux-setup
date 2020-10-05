@@ -7,19 +7,6 @@ URL_ZSH_SYNTAX_HIGHLIGHT="https://github.com/zsh-users/zsh-syntax-highlighting.g
 URL_NVM="https://github.com/lukechilds/zsh-nvm"
 URL_UNITY_HUB="https://public-cdn.cloud.unity3d.com/hub/prod/UnityHub.AppImage"
 
-# before execute
-# create installation directory
-cd /home/$USER/Downloads/
-mkdir $DOWNLOADS
-
-# move to installation directory
-cd $DOWNLOADS
-
-## add yarn repository to sourcelist
-## reference https://classic.yarnpkg.com/en/docs/install/#debian-stable
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
 # update
 sudo apt update -y
 sudo apt upgrade -y
@@ -52,6 +39,12 @@ sh -c "$(wget -O -fsSL $URL_OH_MY_ZSH)" "" --unattended
 git clone $URL_NVM ~/.oh-my-zsh/custom/plugins/zsh-nvm
 git clone $URL_ZSH_SYNTAX_HIGHLIGHT ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+## add yarn repository to sourcelist
+## reference https://classic.yarnpkg.com/en/docs/install/#debian-stable
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+cd /home/$USER/Downloads
 mkdir "$DOWNLOADS"
 wget -c "$URL_GOOGLE_CHROME" -P "$DOWNLOADS"
 wget -c "$URL_UNITY_HUB" -P "$DOWNLOADS"
