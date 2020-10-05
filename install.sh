@@ -36,8 +36,10 @@ sudo snap install code --classic
 sudo snap install insomnia
 sudo snap install dotnet-runtime-31
 sudo snap install dotnet-sdk --classic
-sudo snap install rider --classic
+# sudo snap install rider --classic
 sudo snap alias dotnet-sdk.dotnet dotnet
+sudo snap install krita
+sudo snap install blender --classic
 
 # install oh my zsh
 sh -c "$(wget -O -fsSL $URL_OH_MY_ZSH)" "" --unattended
