@@ -19,8 +19,8 @@ ssh-add ~/.ssh/id_rsa
 # installing xclip
 sudo apt-get install xclip
 
-# copying ssh-key with xclip
-xclip -sel clip < ~/.ssh/id_rsa.pub
+# printing public ssh
+cat ~/.ssh/id_rsa.pub
 
 # https://github.com/settings/keys
 echo "paste your ssh key into your git provider here: $GITHUB_URL"
