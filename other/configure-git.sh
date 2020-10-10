@@ -16,8 +16,6 @@ eval "$(ssh-agent -s)"
 # add SSH private key to the ssh-agent
 ssh-add ~/.ssh/id_rsa
 
-# installing xclip
-sudo apt-get install xclip
 
 # printing public ssh
 cat ~/.ssh/id_rsa.pub
