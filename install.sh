@@ -6,7 +6,7 @@ PROGRAMS="./programs"
 POST_INSTALLATION="./post-installation"
 
 # PACKAGES
-declare -a DEB_PACKAGES=("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
+declare -a DEB_PACKAGES=("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" "https://zoom.us/client/latest/zoom_amd64.deb")
 declare -a KDE_APT_PACKAGES=("kio-gdrive")
 declare -a APT_PACKAGES=("curl" "snapd" "zsh" "git" "fonts-firacode" "vlc" "steam" "remmina" "remmina-plugin-rdp" "php" "php-cli" "php-fpm" "php-json" "php-pdo" "php-mysql" "php-zip" "php-gd" "php-mbstring" "php-curl" "php-xml" "php-pear" "php-bcmath" "default-jre" "default-jdk")
 declare -a SNAP_PACKAGES=("insomnia" "krita" "blender --classic" "spotify" "intellij-idea-community --classic" "dotnet-sdk" "dotnet-runtime-31")
