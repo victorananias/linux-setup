@@ -14,3 +14,5 @@ https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&t
 
 
 * install [PyTorch](https://pytorch.org/get-started/locally/)
+
+* configure Environment [here](https://timoast.github.io/blog/installing-pytorch/)

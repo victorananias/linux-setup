@@ -6,3 +6,4 @@
 - Memory: 16GB
 - Graphics Card: Nvidia Rtx 2070 Super
 - Motherboard: MSI MAG B550M MORTAR WIFI
+- SO: Ubuntu 20.10
