@@ -7,8 +7,8 @@ POST_INSTALLATION="./post-installation"
 
 # PACKAGES
 declare -a DEB_PACKAGES=("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
-declare -a APT_PACKAGES=("curl" "snapd" "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "steam")
-declare -a SNAP_PACKAGES=("insomnia" "krita" "blender --classic" "intellij-idea-community --classic" "spotify" "opera")
+declare -a APT_PACKAGES=("curl" "snapd" "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre")
+declare -a SNAP_PACKAGES=("insomnia" "intellij-idea-community --classic" "opera" "blender --classic" "krita")
 declare -a APPIMAGES=()
 
 # UPDATE
