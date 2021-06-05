@@ -2,12 +2,12 @@
 
 DOWNLOADS="$HOME/Downloads/Installation Files"
 APPIMAGES_DIRECTORY="$HOME/Applications"
-PROGRAMS="./programs-to-install"
+PROGRAMS="./programs"
 POST_INSTALLATION="./post-installation"
 
 # PACKAGES
 declare -a DEB_PACKAGES=("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
-declare -a APT_PACKAGES=("curl" "snapd" "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre")
+declare -a APT_PACKAGES=("curl" "snapd"  "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre")
 declare -a SNAP_PACKAGES=("intellij-idea-community --classic" "opera")
 declare -a APPIMAGES=()
 
