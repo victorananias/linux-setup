@@ -7,8 +7,8 @@ POST_INSTALLATION="./post-installation"
 
 # PACKAGES
 declare -a DEB_PACKAGES=("https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb")
-declare -a APT_PACKAGES=("curl" "snapd"  "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre")
-declare -a SNAP_PACKAGES=("intellij-idea-community --classic" "opera")
+declare -a APT_PACKAGES=("curl" "snapd"  "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre" "qbittorrent" "vlc")
+declare -a SNAP_PACKAGES=("intellij-idea-community --classic" "opera" "discord" "postman")
 declare -a APPIMAGES=()
 
 # UPDATE
