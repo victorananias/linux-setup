@@ -1,10 +1,11 @@
 #!/bin/bash
 
-declare -a SNAP_PACKAGES=("postman" "spotify")
+# sudo apt install snapd
 
-echo "Installing snap packages"
+# declare -a SNAP_PACKAGES=("postman")
 
-for i in "${SNAP_PACKAGES[@]}"
-do
-    sudo snap install $i
-done
+# echo "Installing snap packages"
+
+# for i in "${SNAP_PACKAGES[@]}"; do
+#     sudo snap install $i
+# done
