@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -a APT_PACKAGES=("curl" "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre" "qbittorrent" "flatpak")
+declare -a APT_PACKAGES=("curl" "zsh" "git" "fonts-firacode" "default-jre" "default-jdk" "calibre" "qbittorrent" "flatpak" "pulseeffects")
 
 echo "Install apt packages"
 
