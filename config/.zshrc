@@ -1,8 +1,11 @@
-# Set up the prompt
+export ZSH_EXTENSIONS_DIR="$HOME/.zsh-extensions"
 
 source $HOME/.zsh-extensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+autoload -Uz vcs_info
+
 autoload -Uz promptinit
+
 promptinit
 prompt adam1
 
@@ -25,7 +28,15 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
+if whence dircolors >/dev/null; then
+  eval "$(dircolors -b)"
+  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+  alias ls='ls --color'
+else
+  export CLICOLOR=1
+  zstyle ':completion:*:default' list-colors ''
+fi
+
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
