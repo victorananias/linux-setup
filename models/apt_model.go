@@ -9,71 +9,73 @@ import (
 	"github.com/victorananias/setup-linux/packages"
 )
 
-type AptView struct {
-	choices  []string
-	cursor   int
-	selected map[int]struct{}
+var selectedAptPackages map[int]struct{}
+
+var APT_MODEL = "AptModel"
+
+type AptModel struct {
+	choices []string
+	cursor  int
 }
 
-func NewAptView() *AptView {
+func NewAptModel() *AptModel {
 	choices := packages.GetAptPackages()
 	sort.Strings(choices)
-	selected := func() map[int]struct{} {
+	selectedAptPackages = func() map[int]struct{} {
 		m := make(map[int]struct{}, 0)
 		for i := 0; i < len(choices); i++ {
 			m[i] = struct{}{}
 		}
 		return m
 	}()
-	return &AptView{
-		choices:  choices,
-		selected: selected,
+	return &AptModel{
+		choices: choices,
 	}
 }
 
-func (view *AptView) Init() tea.Cmd {
+func (m *AptModel) Init() tea.Cmd {
 	return nil
 }
 
-func (view *AptView) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
+func (m *AptModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 
 	case tea.KeyMsg:
 		switch msg.String() {
 		case "ctrl+c", "q":
-			return view, tea.Quit
+			return m, tea.Quit
 		case "up", "k":
-			if view.cursor > 0 {
-				view.cursor--
-			} else if view.cursor == 0 {
-				view.cursor = len(view.choices)
+			if m.cursor > 0 {
+				m.cursor--
+			} else if m.cursor == 0 {
+				m.cursor = len(m.choices)
 			}
 		case "down", "j":
-			if view.cursor < len(view.choices) {
-				view.cursor++
-			} else if view.cursor == len(view.choices) {
-				view.cursor = 0
+			if m.cursor < len(m.choices) {
+				m.cursor++
+			} else if m.cursor == len(m.choices) {
+				m.cursor = 0
 			}
 		case " ":
-			_, ok := view.selected[view.cursor]
+			_, ok := selectedAptPackages[m.cursor]
 			if ok {
-				delete(view.selected, view.cursor)
+				delete(selectedAptPackages, m.cursor)
 			} else {
-				view.selected[view.cursor] = struct{}{}
+				selectedAptPackages[m.cursor] = struct{}{}
 			}
 		case "enter":
-			if view.cursor == len(view.choices) {
-
+			if m.cursor == len(m.choices) {
+				mainModel.CurrentModel = INSTALL_APT_PACKAGES_MODEL
 			} else {
-				view.cursor = len(view.choices)
+				m.cursor = len(m.choices)
 			}
 		}
 	}
 
-	return view, nil
+	return m, nil
 }
 
-func (m *AptView) View() string {
+func (m *AptModel) View() string {
 	var cursorStyle = lipgloss.NewStyle().
 		Bold(true).
 		Foreground(lipgloss.Color("#b728b5"))
@@ -81,14 +83,14 @@ func (m *AptView) View() string {
 
 	for i, choice := range m.choices {
 		checked := "[ ]"
-		if _, ok := m.selected[i]; ok {
+		if _, ok := selectedAptPackages[i]; ok {
 			checked = "[x]"
 		}
 		if m.cursor == i {
 			choice = cursorStyle.Render(choice)
 			checked = cursorStyle.Render(checked)
 		}
-		s += fmt.Sprintf("  %s %s\n", checked, choice)
+		s += fmt.Sprintf("  %s %s (%d)\n", checked, choice, m.cursor)
 	}
 
 	if m.cursor == len(m.choices) {
