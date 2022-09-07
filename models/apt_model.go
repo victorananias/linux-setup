@@ -1,4 +1,4 @@
-package views
+package models
 
 import (
 	"fmt"
@@ -33,6 +33,10 @@ func NewAptModel() *AptModel {
 	}
 }
 
+func (m *AptModel) ChangeCurrentModel() {
+	CurrentModel = INSTALL_APT_PACKAGES_MODEL
+}
+
 func (m *AptModel) Init() tea.Cmd {
 	return nil
 }
@@ -65,7 +69,7 @@ func (m *AptModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			}
 		case "enter":
 			if m.cursor == len(m.choices) {
-				mainModel.CurrentModel = INSTALL_APT_PACKAGES_MODEL
+				tea.Model = NewInstallAptPackagesModel()
 			} else {
 				m.cursor = len(m.choices)
 			}

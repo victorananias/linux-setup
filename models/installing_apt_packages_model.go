@@ -1,4 +1,4 @@
-package views
+package models
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-var INSTALL_APT_PACKAGES_MODEL = "NewInstallAptPackagesModel"
+var INSTALL_APT_PACKAGES_MODEL = "InstallAptPackagesModel"
 
 func NewInstallAptPackagesModel() *InstallAptPackagesModel {
 	return &InstallAptPackagesModel{}

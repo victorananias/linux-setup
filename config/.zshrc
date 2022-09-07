@@ -1,17 +1,8 @@
-export ZSH_EXTENSIONS_DIR="$HOME/.zsh-extensions"
+# Set up the prompt
 
 source $HOME/.zsh-extensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-autoload -Uz vcs_info
-precmd_vcs_info() { vcs_info }
-precmd_functions+=( precmd_vcs_info )
-setopt prompt_subst
-RPROMPT='${vcs_info_msg_0_}'
-# PROMPT='${vcs_info_msg_0_}%# '
-zstyle ':vcs_info:git:*' formats '%b'
-
 autoload -Uz promptinit
-
 promptinit
 prompt adam1
 
@@ -34,15 +25,7 @@ zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
-if whence dircolors >/dev/null; then
-  eval "$(dircolors -b)"
-  zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-  alias ls='ls --color'
-else
-  export CLICOLOR=1
-  zstyle ':completion:*:default' list-colors ''
-fi
-
+eval "$(dircolors -b)"
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
@@ -54,3 +37,13 @@ zstyle ':completion:*' verbose true
 
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+export GOROOT=$HOME/.go
+export PATH=$PATH:$GOROOT/bin
+
+function start_vm_network() {
+    sudo virsh net-start default
+}
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
