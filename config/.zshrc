@@ -1,6 +1,6 @@
 # Set up the prompt
 
-source $HOME/.zsh-extensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/zsh/extensions/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -Uz promptinit
 promptinit
