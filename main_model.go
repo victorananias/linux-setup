@@ -12,11 +12,11 @@ const (
 )
 
 type MainModel struct {
-	state      sessionState
-	scripts    tea.Model
-	runScripts tea.Model
-	selected   []*Script
-	dir        string
+	state          sessionState
+	scripts        tea.Model
+	runningScripts tea.Model
+	selected       []*Script
+	dir            string
 }
 
 var optionDir = "/Install"
@@ -41,8 +41,8 @@ func (m *MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.selected = msg.Selected
 		m.state = runScriptsView
 		action := m.selected[0].action
-		m.runScripts = NewRunningScriptsModel(action, m.selected)
-		cmd := m.runScripts.Init()
+		m.runningScripts = NewRunningScriptsModel(action, m.selected)
+		cmd := m.runningScripts.Init()
 		cmds = append(cmds, cmd)
 	}
 
@@ -56,12 +56,12 @@ func (m *MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.scripts = scriptsModel
 		cmd = newCmd
 	case runScriptsView:
-		newRunScripts, newCmd := m.runScripts.Update(msg)
-		runScriptsModel, ok := newRunScripts.(RunningScriptsModel)
+		newRunningScripts, newCmd := m.runningScripts.Update(msg)
+		runningScriptsModel, ok := newRunningScripts.(RunningScriptsModel)
 		if !ok {
 			panic("could not perform assertion on scripts model")
 		}
-		m.runScripts = runScriptsModel
+		m.runningScripts = runningScriptsModel
 		cmd = newCmd
 	}
 	cmds = append(cmds, cmd)
@@ -73,7 +73,7 @@ func (m *MainModel) View() string {
 	case scriptsView:
 		return m.scripts.View()
 	case runScriptsView:
-		return m.runScripts.View()
+		return m.runningScripts.View()
 	}
 	return ""
 }

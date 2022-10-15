@@ -10,6 +10,8 @@ import (
 	"github.com/charmbracelet/lipgloss"
 )
 
+var cursorStyle = lipgloss.NewStyle().Bold(true).Foreground(lipgloss.Color("#b728b5"))
+
 type ScriptsModel struct {
 	choices       []*Script
 	cursor        int
@@ -23,7 +25,7 @@ type RunSelected struct {
 }
 
 func NewScriptsModel(dir string) *ScriptsModel {
-	scripts := GetScriptsFrom(dir)
+	scripts := GetScriptsFromDirectory(dir)
 	scripts = sortAlphabetically(scripts)
 	return &ScriptsModel{
 		choices:       scripts,
@@ -33,7 +35,7 @@ func NewScriptsModel(dir string) *ScriptsModel {
 	}
 }
 
-func GetScriptsFrom(dir string) []*Script {
+func GetScriptsFromDirectory(dir string) []*Script {
 	files, err := ioutil.ReadDir(dir)
 	if err != nil {
 		log.Fatal(err)
@@ -88,7 +90,6 @@ func (m *ScriptsModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m *ScriptsModel) View() string {
-	var cursorStyle = m.GetCursorStyle()
 	v := "\n\nWhat packages should be installed?\n\n"
 
 	for i, choice := range m.choices {
@@ -113,12 +114,6 @@ func (m *ScriptsModel) View() string {
 	v += "\nPress q to quit\nPress space to select \nPress enter to install\n"
 
 	return v
-}
-
-func (m *ScriptsModel) GetCursorStyle() lipgloss.Style {
-	return lipgloss.NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("#b728b5"))
 }
 
 func (m *ScriptsModel) isSelected(element int) bool {
