@@ -1,3 +1,7 @@
 [user]
-	name = Victor
-	email = 31508035+victorananias@users.noreply.github.com
+	name = Victor Ananias
+	email = victor.ananias@sap.com
+[url "git@github.wdf.sap.corp:"]
+	insteadOf = https://github.wdf.sap.corp/
+[core]
+	autocrlf = input
