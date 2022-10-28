@@ -22,7 +22,7 @@ set-var-in-file () {
 
     sed -i "" "s/${variable}=.*/${variable}=\"${content}\"/" "$file"
 
-    szs
+    exec zsh
 }
 
 start-docker() {
