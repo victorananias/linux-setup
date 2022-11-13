@@ -1,10 +1,10 @@
 #!/bin/bash
 
-PROGRAMS="./install-programs"
+SOFTWARE="./Software"
 
 echo "Run install scripts"
 
-for i in "$PROGRAMS"/*
+for i in "$SOFTWARE"/*
 do
     source $i
 done
